@@ -1,0 +1,404 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: 'Microsoft JhengHei';
+  list-style: none;
+  text-decoration: none;
+  font-family: verdana;
+}
+body {
+  background-color: #f5f5f5;
+}
+
+#mytitle {
+  margin: 0 10px;
+  color: #444;
+}
+.entry-btn {
+  width: 70px;
+  height: 30px;
+  vertical-align: middle;
+  background-color: #fff;
+  font-size: 13px;
+  color: #666;
+  cursor: pointer;
+}
+
+/*--------------------------------------*/
+
+#login-name-link, #login-sign-in-link {
+  height: 64px;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 64px;
+}
+#login-buttons a {
+  text-decoration: none;
+  color: #444;
+}
+
+/*--------------------------------------*/
+
+#game {
+  width: 880px;
+  height: 680px;
+  font-size: 0;
+  margin: 10px auto;
+  /*outline: 2px solid #ccc;*/
+  box-shadow: -1px 4px 10px 1px #bbb;
+}
+
+/*--------------------------------------*/
+
+#game-board {
+  width: 680px;
+  height: 680px;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 0;
+  /*background-color: #e9ae65;*/
+}
+#game-board:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  background: url('/pics/wood.jpg');
+  opacity: .8;
+}
+.game-board-row {
+  width: 680px;
+  height: 40px;
+  font-size: 0;
+}
+
+.game-board-title {
+  text-align: center;
+  line-height: 60px;
+  color: rgba(51, 51, 51, .6);
+  font-size: 16px;
+  font-weight: bold;
+  text-shadow: 0.5px 0.5px rgba(204, 204, 204, .7), -0.5px -0.5px rgba(68, 68, 68, .7);
+}
+.bot-cubes {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 16px;
+  line-height: 40px;
+  text-align: center;
+  color: #666;
+}
+
+/*--------------------------------------*/
+
+#game-board-midrow {
+  width: 680px;
+  height: 600px;
+  font-size: 0;
+}
+.game-board-col {
+  width: 40px;
+  height: 600px;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 16px;
+}
+.left-cubes {
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  color: #666;
+}
+
+/*--------------------------------------*/
+
+#game-board-main {
+  width: 600px;
+  height: 600px;
+  position: relative;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 0;
+  z-index: 5;
+}
+.cube {
+  width: 40px;
+  height: 40px;
+  position: relative;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 50%;
+}
+.cube-black {
+  box-shadow:0px 3px 3px rgba(0,0,0,0.5);
+  background: radial-gradient(farthest-corner at 28px 12px , #ccc 0%, #666 20%, #494949 70%, #ccc 90%);
+  transition: all .4s;
+}
+.cube-white {
+  box-shadow:0px 3px 3px rgba(0,0,0,0.5);
+  background: radial-gradient(farthest-corner at 28px 12px , #fff 0%, #eee 20%, #b7b7b7 70%, #eee 86%);
+  transition: all .4s;
+}
+.cube:before {
+  content: '';
+  width: 2px;
+  height: 40px;
+  position: absolute;
+  top: 0;
+  left: 19px;
+  background-color: rgba(51, 51, 51, .5);
+  z-index: -5;
+}
+.cube:after {
+  content: '';
+  width: 40px;
+  height: 2px;
+  position: absolute;
+  top: 19px;
+  left: 0;
+  background-color: rgba(51, 51, 51, .5);
+  z-index: -5;
+}
+.cube-left:after {
+  width: 20px;
+  left: 20px;
+}
+.cube-right:after {
+  width: 20px;
+  right: 20px;
+}
+.cube-top:before {
+  height: 20px;
+  top: 20px;
+}
+.cube-bottom:before {
+  height: 20px;
+  bottom: 20px;
+}
+
+/*--------------------------------------*/
+
+#game-info {
+  width: 200px;
+  height: 680px;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 16px;
+  /*outline: 2px solid #ccc;*/
+}
+
+/*--------------------------------------*/
+
+#steps {
+  width: 160px;
+  height: 400px;
+  margin: 20px;
+  overflow: auto;
+}
+.steps-count {
+  width: 30px;
+  height: 30px;
+  display: inline-block;
+  line-height: 30px;
+  padding: 5px;
+  color: #666;
+}
+.step-li {
+  width: 72px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 30px;
+  padding: 0 9px;
+  font-size: 0;
+}
+.step-li > span {
+  width: 24px;
+  height: 30px;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 30px;
+  padding: 5px 0;
+  text-align: center;
+  font-size: 14px;
+}
+.step-li-white {
+  color: #666;
+  background-color: #eee;
+}
+.step-li-black {
+  color: #eee;
+  background-color: #666;
+}
+.step-li-grey {
+  color: #aaa;
+}
+
+.infosteps-enter {
+  opacity: 0.01;
+}
+.infosteps-enter.infosteps-enter-active {
+  opacity: 1;
+  transition: opacity 500ms ease-in;
+}
+.infosteps-leave {
+  opacity: 1;
+}
+.infosteps-leave.infosteps-leave-active {
+  opacity: 0.01;
+  transition: opacity 50ms ease-in;
+}
+
+/*--------------------------------------*/
+
+#game-info {
+  background-color: #fcfcfc;
+}
+#game-info h5 {
+  text-align: center;
+  margin: 30px 0;
+}
+#player-info {
+  margin: 30px 0;
+}
+.player-row {
+  width: 160px;
+  margin: 10px 20px;
+  font-size: 0;
+}
+.player-row > div {
+  height: 40px;
+  display: inline-block;
+  vertical-align: top;
+  font-size: 16px;
+  line-height: 40px;
+}
+.player-pointer {
+  width: 16px;
+  position: relative;
+}
+.player-pointer.red:before {
+  content: '';
+  width: 0px;
+  height: 0px;
+  position: absolute;
+  top: 12px; left: 0;
+  border-top: 8px solid transparent;
+  border-left: 10px solid #f9a825;
+  border-bottom: 8px solid transparent;
+}
+.player-dot {
+  width: 40px;
+  border-radius: 50%;
+}
+.player-dot.black {
+  background-color: #666;
+}
+.player-dot.white {
+  background-color: #eee;
+}
+.player-col {
+  width: 104px;
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  padding: 0 0 0 10px;
+}
+.player-col.grey {
+  color: #aaa;
+}
+
+/*--------------------------------------*/
+
+#landing-info {
+  width: 90%;
+  margin: 20px auto;
+  font-size: 0;
+}
+#landing-info > div {
+  height: 200px;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+  padding: 10px;
+  font-size: 14px;
+  background-color: #fff;
+  color: #666;
+  overflow: auto;
+}
+#landing-info > div > h2 {
+  padding: 5px;
+}
+#game-intro {
+  width: 38%;
+  margin-right: 2%;
+}
+#game-intro > p {
+  padding: 5px;
+  line-height: 24px;
+}
+#count-board {
+  width: 31%;
+  margin-right: 2%;
+}
+#online-player {
+  width: 27%;
+}
+.users {
+  height: 30px;
+  position: relative;
+  line-height: 30px;
+  padding-left: 30px;
+}
+.users:before {
+  content: '';
+  width: 10px;
+  height: 10px;
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  border-radius: 50%;
+}
+.users.users-on:before {
+  background-color: #f9a825;
+}
+.users.users-off:before {
+  background-color: #ddd;
+}
+.users-off > span {
+  float: right;
+  padding-right: 5px;
+  font-size: 12px;
+  line-height: 30px;
+  color: #aaa;
+}
+
+/*--------------------------------------*/
+
+#page-ul {
+  font-size: 0;
+  text-align: center;
+}
+#page-ul li {
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  vertical-align: top;
+  line-height: 40px;
+  font-size: 14px;
+  text-align: center;
+  margin: 10px;
+  background-color: #fff;
+  color: #666;
+  cursor: pointer;
+}
+#page-ul li.page-active {
+  background-color: #f9a825;
+  color: #fff;
+}

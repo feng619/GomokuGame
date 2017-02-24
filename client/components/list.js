@@ -22,6 +22,7 @@ class List extends Component {
     // console.log(perPage,onPageNum,perPage);
     this.props.onPage([perPage*(onPageNum-1), perPage, 1])
     //setTimeout(() => {this.props.onPage([perPage*(onPageNum-1), perPage, 1])}, 200);
+    //
   }
 
   addPlayer( id, idx ) {
